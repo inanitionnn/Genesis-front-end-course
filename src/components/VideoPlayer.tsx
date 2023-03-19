@@ -1,15 +1,13 @@
 import React, { useEffect, useRef } from "react";
-import { ICourse } from "../interfaces/course.interface";
 import Hls from "hls.js";
 
 interface ICourseCardProps {
-  course: ICourse;
+  videoUrl: string;
 }
-export default function Video(props: ICourseCardProps) {
-  const { course } = props;
+export default function VideoPlayer(props: ICourseCardProps) {
+  const { videoUrl } = props;
   const videoRef = useRef(null);
   const hlsRef = useRef<Hls | null>(null);
-  const videoUrl = course.meta.courseVideoPreview?.link;
   useEffect(() => {
     if (videoRef.current && videoUrl) {
       const video = videoRef.current;
@@ -25,5 +23,9 @@ export default function Video(props: ICourseCardProps) {
       };
     }
   }, [videoRef, videoUrl]);
-  return <video ref={videoRef} controls />;
+  return (
+    <div className="bg-indigo-500 rounded-lg max-w-4xl flex justify-center">
+      <video ref={videoRef} width={800} controls placeholder="course video" />
+    </div>
+  );
 }

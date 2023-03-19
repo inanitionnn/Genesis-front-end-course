@@ -1,14 +1,14 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Main from "./pages/main";
-import CoursePage from "./pages/coursePage";
+import CoursesPage from "./pages/CoursesPage";
+import LessonsPage from "./pages/LessonsPage";
 
 export default function AppRouter() {
   return (
     <Routes>
-      <Route path="/" element={<Main />} />
-      <Route path="/:courseId" element={<CoursePage />} />
-      <Route path="*" element={<Main />} />
+      <Route path="/" element={<CoursesPage />} />
+      <Route path="/:courseId" element={<LessonsPage />} />
+      <Route path="*" element={<CoursesPage />} />
     </Routes>
   );
 }
